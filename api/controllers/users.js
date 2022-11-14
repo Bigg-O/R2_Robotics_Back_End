@@ -41,7 +41,7 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  User.find({ username: req.body.email })
+  User.find({ email: req.body.email })
     .then(users => {
       if (users.length < 1) {
         return res.status(401).json({
