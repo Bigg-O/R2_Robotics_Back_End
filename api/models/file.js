@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const fileSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     user_id: { type: String, required: true },
-    productId: { type: String },
     productInfo: { type: String },
     productName: { type: String },
     referenceNumber: { type: Number },
