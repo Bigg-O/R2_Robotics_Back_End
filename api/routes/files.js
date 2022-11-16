@@ -9,6 +9,6 @@ router.post("/create", checkAuth, Controller.create);
 
 // router.patch("/:id", checkAuth, Controller.update);
 
-// router.delete("/:id", checkAuth, Controller.delete);
+router.delete("/:id", checkAuth, Controller.delete);
 
 module.exports = router;
