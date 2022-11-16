@@ -3,7 +3,7 @@ const router = express.Router();
 const checkAuth = require('../middleware/check-auth');
 const Controller = require('../controllers/files');
 
-// router.get("/", checkAuth, Controller.get_all);
+router.get("/:id", checkAuth, Controller.get_all);
 
 router.post("/create", checkAuth, Controller.create);
 
