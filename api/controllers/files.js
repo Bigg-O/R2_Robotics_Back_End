@@ -61,37 +61,33 @@ exports.create = (req, res, next) => {
       });
   };
 
-//   exports.update = (req, res, next) => {
-//   console.log(req.params.id)
-//   console.log(req.body)
-//   const id = req.params.id;
-//   const updateOps = {
-//     total_amount : req.body.total_amount,
-//     bidders: req.body.bidders
-//   };
-//   // for (const ops of req.body) {
-//   //   updateOps[ops.propName] = ops.value;
-//   // }
-//   File.update({ _id: id }, { $set: updateOps })
-//     .then(result => {
-//       res.status(200).json({
-//         message: "File updated",
-//         request: {
-//           type: "PATCH",
-//           url: "http://localhost:3000/Files/" + id
-//         }
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json({
-//         error: err
-//       });
-//     });
-// };
+  exports.update = (req, res, next) => {
+    const id = req.params.id;
+    const updateOps = {
+      productName: req.body.productName,
+      referenceNumber: req.body.referenceNumber,
+      country: req.body.country,
+      productInfo: req.body.productInfo,
+    };
+    File.update({ _id: id }, { $set: updateOps })
+      .then(result => {
+        res.status(200).json({
+          message: "File updated",
+          request: {
+            type: "PATCH",
+            url: "http://localhost:3000/Files/" + id
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
+          error: err
+        });
+      });
+};
 
 exports.delete = (req, res, next) => {
-  console.log("DELETE")
   const id = req.params.id;
   File.remove({ _id: id })
     .then(result => {

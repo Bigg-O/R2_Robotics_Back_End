@@ -7,7 +7,7 @@ router.get("/:id", checkAuth, Controller.get_all);
 
 router.post("/create", checkAuth, Controller.create);
 
-// router.patch("/:id", checkAuth, Controller.update);
+router.patch("/:id", checkAuth, Controller.update);
 
 router.delete("/:id", checkAuth, Controller.delete);
 
