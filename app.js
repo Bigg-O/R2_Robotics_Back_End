@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-// const fileRoutes = require("./api/routes/files");
+const fileRoutes = require("./api/routes/files");
 const userRoutes = require('./api/routes/users');
 
 mongoose.connect(process.env.R2_URI, { useNewUrlParser: true })
@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 });
 
 // Route handle requests
-// app.use("/files", fileRoutes);
+app.use("/files", fileRoutes);
 app.use("/users", userRoutes);
 
 //testing for Heroku deployment
