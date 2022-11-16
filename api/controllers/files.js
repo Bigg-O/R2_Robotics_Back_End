@@ -92,23 +92,24 @@ exports.create = (req, res, next) => {
 //     });
 // };
 
-// exports.delete = (req, res, next) => {
-//   const id = req.params.id;
-//   File.remove({ _id: id })
-//     .then(result => {
-//       res.status(200).json({
-//         message: "File deleted",
-//         request: {
-//           type: "POST",
-//           url: "http://localhost:3000/Files",
-//           body: { name: "String", price: "Number" }
-//         }
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json({
-//         error: err
-//       });
-//     });
-// };
+exports.delete = (req, res, next) => {
+  console.log("DELETE")
+  const id = req.params.id;
+  File.remove({ _id: id })
+    .then(result => {
+      res.status(200).json({
+        message: "File deleted",
+        request: {
+          type: "POST",
+          url: "http://localhost:3000/Files",
+          body: result
+        }
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
+    });
+};
