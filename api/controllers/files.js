@@ -1,28 +1,26 @@
 const mongoose = require("mongoose");
 const File = require("../models/file");
 
-// exports.get_all = (req, res, next) => {
-//     File.find()
-//       .then(files => {
-//         res.status(200).json({
-//           count: files.length,
-//           request: "GET",
-//           files: files.map(file => {
-//             return file
-//           })
-//         })
-//       })
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json({
-//           error: err
-//         });
-//       });
-//   };
+exports.get_all = (req, res, next) => {
+    File.find({user_id : req.params.id})
+      .then(files => {
+        res.status(200).json({
+          count: files.length,
+          request: "GET",
+          files: files.map(file => {
+            return file
+          })
+        })
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
+          error: err
+        });
+      });
+};
 
 exports.create = (req, res, next) => {
-  console.log(req)
-
     const file = new File({
       _id: new mongoose.Types.ObjectId(),
       user_id: req.body.user_id,
@@ -35,6 +33,7 @@ exports.create = (req, res, next) => {
       image: req.body.image,
       file: req.body.file
     });
+
     file.save()
       .then(result => {
         console.log(result);
