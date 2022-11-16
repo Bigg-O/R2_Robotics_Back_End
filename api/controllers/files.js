@@ -24,7 +24,6 @@ exports.create = (req, res, next) => {
     const file = new File({
       _id: new mongoose.Types.ObjectId(),
       user_id: req.body.user_id,
-      productId: req.body.productId,
       productInfo: req.body.productInfo,
       productName: req.body.productName,
       referenceNumber: req.body.referenceNumber,
@@ -42,7 +41,6 @@ exports.create = (req, res, next) => {
           createdFile: {
             _id: result._id,
             user_id: result.user_id,
-            productId: result.productId,
             productInfo: result.productInfo,
             productName: result.productName,
             referenceNumber: result.referenceNumber,
